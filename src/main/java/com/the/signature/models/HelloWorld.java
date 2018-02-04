@@ -45,7 +45,7 @@ public class HelloWorld {
         this.message = message;
     }
     
-    public HelloWorld getHelloWorld(){
+    public static HelloWorld getHelloWorld(){
         HelloWorld hello = null;
         try {
             Connection con = ConnectionBuilder.getMySqlCond();
@@ -62,5 +62,12 @@ public class HelloWorld {
         }
         return hello;
     }
+
+    @Override
+    public String toString() {
+        return "HelloWorld{" + "id=" + id + ", message=" + message + '}';
+    }
+    
+    
     
 }
