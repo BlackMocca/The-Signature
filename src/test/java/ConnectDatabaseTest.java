@@ -19,6 +19,7 @@ import org.junit.Test;
  * @author huag1
  */
 public class ConnectDatabaseTest {
+
     protected String rootProjectLinux = System.getenv("MAVEN_PROJECTBASEDIR");
     protected String rootProjectWindow = System.getenv("=C:");
     
@@ -28,7 +29,6 @@ public class ConnectDatabaseTest {
         } else {
             ENV.setDotenv(Dotenv.configure().directory(rootProjectWindow).load());
         }
-          
         DotenvContextListener.initConnectionDatabase();
     }
     
