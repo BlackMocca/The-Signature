@@ -21,5 +21,9 @@ public class ENV {
     public static void setDotenv(Dotenv dotenv) {
         ENV.dotenv = dotenv;
     }
+
+    public static Dotenv getDotenv() {
+        return dotenv;
+    }
       
 }

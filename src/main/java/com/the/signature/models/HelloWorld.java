@@ -48,7 +48,7 @@ public class HelloWorld {
     public static HelloWorld getHelloWorld(){
         HelloWorld hello = null;
         try {
-            Connection con = ConnectionBuilder.getMySqlCond();
+            Connection con = ConnectionBuilder.getConnection();
             PreparedStatement pstmt = con.prepareStatement("select * from helloworld");
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){

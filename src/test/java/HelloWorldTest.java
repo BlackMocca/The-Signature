@@ -19,17 +19,15 @@ import static org.junit.Assert.*;
  *
  * @author huag1
  */
-public class HelloWorldTest {
+public class HelloWorldTest extends ConnectDatabaseTest{
 
     public HelloWorldTest() {
-        String rootProject = System.getenv("=C:");
-        ENV.setDotenv(Dotenv.configure().directory(rootProject).load());
-        DotenvContextListener.initConnectionDatabase();
     }
+
 
     @Test
     public void testHelloWorld(){
-        System.out.println(System.getenv());
+        
         HelloWorld expect = HelloWorld.getHelloWorld();
         Assert.assertNotNull(expect);
     }

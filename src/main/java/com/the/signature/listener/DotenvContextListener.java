@@ -25,7 +25,7 @@ public class DotenvContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         String rootProject = System.getenv("PATH_PROJECT_SIGNATURE");
         ENV.setDotenv(Dotenv.configure().directory(rootProject).load());  
-        initConnectionDatabase();
+        DotenvContextListener.initConnectionDatabase();
     }
 
     @Override

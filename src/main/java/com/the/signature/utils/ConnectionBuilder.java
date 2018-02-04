@@ -56,9 +56,6 @@ public class ConnectionBuilder {
         connection =  DriverManager.getConnection(connectionString, builder.getUsername(), builder.getPassword());
     }
     
-    public static Connection getMySqlCond() {
-        return connection;
-    }
 
     public static Connection getConnection() {
         return connection;
