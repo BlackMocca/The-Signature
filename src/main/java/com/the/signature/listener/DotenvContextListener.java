@@ -24,7 +24,7 @@ public class DotenvContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         String rootProject = System.getenv("PATH_PROJECT_SIGNATURE");
-        ENV.setDotenv(Dotenv.configure().directory(rootProject).ignoreIfMissing().load());  
+        ENV.setDotenv(Dotenv.configure().directory(rootProject).load());  
         initConnectionDatabase();
     }
 
@@ -33,7 +33,7 @@ public class DotenvContextListener implements ServletContextListener {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void initConnectionDatabase(){
+    public static void initConnectionDatabase(){
         try {
             String host = ENV.getENV("DB_HOST");
             String port = ENV.getENV("DB_PORT");
