@@ -56,7 +56,7 @@ public class ConnectionBuilder {
         connection =  DriverManager.getConnection(connectionString, builder.getUsername(), builder.getPassword());
     }
     
-    public static Connection getMySqlCond() throws ClassNotFoundException, SQLException{
+    public static Connection getMySqlCond() {
         return connection;
     }
 
