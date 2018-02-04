@@ -5,11 +5,9 @@
  */
 package com.the.signature.servlets;
 
-import io.github.cdimascio.dotenv.Dotenv;
-import com.the.signature.models.ENV;
+import com.the.signature.models.HelloWorld;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author huag1
  */
-public class ENVServlet extends HttpServlet {
+public class HelloWorldServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +31,9 @@ public class ENVServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ENVServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ENVServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Servlet ENVServlet at " + ENV.getENV("TEST") + "</h1>");
-            out.println("<h1>Servlet ENVServlet at " + System.getenv("PATH_PROJECT_SIGNATURE") + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        HelloWorld hello = HelloWorld.getHelloWorld();
+        request.setAttribute("helloworld", hello);
+        getServletContext().getRequestDispatcher("/hello.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
