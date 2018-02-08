@@ -100,3 +100,4 @@ $RECYCLE.BIN/
 .env
 
 # End of https://www.gitignore.io/api/java,macos,maven,windows,netbeans
+/nbproject/
