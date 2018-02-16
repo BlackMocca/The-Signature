@@ -1,8 +1,12 @@
 # The-Signature
 Software Process Management Project
 
-###Thai Language
-##โปรเจคดังกล่าวมีการใช้ tomcat และ maven และขอข้ามการติดตั้งทั้ง 2
+วิดิโอประกอบการทำงานของระบบ https://www.youtube.com/watch?v=XsrartQPKDU&feature=youtu.be
+
+## Thai Language
+
+### โปรเจคดังกล่าวมีการใช้ tomcat และ maven และขอข้ามการติดตั้งทั้ง 2
+
 
 หลังจาก clone โปรเจคแล้ว ให้ไปที่ไฟล์ ${Catalina_Home}/bin/catalina และใส่ค่า root project of The-Signature
 
@@ -31,7 +35,8 @@ mvn install
 mvn test
 ```
 
-#How to deploy on tomcat server by Maven
+### วิธีการ deploy บน tomcat server ด้วย marven
+
 
 การ deploy สามารถเซ็ตค่าสำหรับการ deploy ได้ที่ pom.xml ซึ่งสามารถเซ้ตค่า URL ที่ต้องการอัพหรือ Context Path
 
@@ -53,8 +58,10 @@ mvn tomcat7:redeploy
 mvn tomcat7:undeploy
 ```
 
-###English Language
-##This project use tomcat and maven  
+## English Language
+
+### This project use tomcat and maven  
+
 
 after you already clone the project. Please find the file "${Catalina_Home}/bin/catalina" and input "root project of The-Signature"
 
@@ -83,7 +90,9 @@ if you want to test. use this command
 mvn test
 ```
 
-#How to deploy on tomcat server by Maven
+
+### How to deploy on tomcat server by Maven
+
 
 for deploy, you can set value for deploy in file pom.xml which you can set url to deploy
 
@@ -105,10 +114,16 @@ if you want to delete project after you deployed. use this command.
 mvn tomcat7:undeploy
 ```
 
-#Member
+## Member
+
 58130500004 Kittitat Rattanapinyopas
+
 58130500008 Khemanij Mantanajaru
+
 58130500013 Jackrit Yangsung
+
 58130500024 Chanon Thongsuk
+
 58130500038 Teeradet Phondetparinya
+
 58130500049 Patiphan Thonguam
