@@ -31,7 +31,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class FileUploadServlet extends HttpServlet {
     private boolean isMultipart;
     private String filePath;
-    private File file ;
     
     public void init(){
         filePath = ENV.getENV("PATH_PROJECT_SIGNATURE")+ "/src/main/webapp/images/";
@@ -48,67 +47,7 @@ public class FileUploadServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        DiskFileItemFactory factory = new DiskFileItemFactory();
 
-        ServletContext servletContext = this.getServletConfig().getServletContext();
-        File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
-        factory.setRepository(repository);
-        
-        // Create a new file upload handler
-        ServletFileUpload upload = new ServletFileUpload(factory);
-
-        try {
-            // Parse the request
-            List<FileItem> items = upload.parseRequest(request);
-            Iterator files = items.iterator();
-            
-            while(files.hasNext()) {
-                FileItem fileItem = (FileItem) files.next();
-                File file;
-                // get value from input
-                if(!fileItem.isFormField()){
-                    String fieldName = fileItem.getFieldName();
-                    String fileName = fileItem.getName();
-                    String contentType = fileItem.getContentType();
-                    boolean isInMemory = fileItem.isInMemory();
-                    long sizeInBytes = fileItem.getSize();
-                    
-                    // Write the file
-                
-                    if( fileName.lastIndexOf("\\") >= 0 ) {
-                      file = new File( filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
-                   } else {
-                      file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
-                   }
-                    try {
-                        fileItem.write(file) ;
-                    } catch (Exception ex) {
-                        Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                   out.println("Uploaded Filename: " + fileName + "<br>");
-                }
-            }
-             try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet FileUploadServlet</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Servlet FileUploadServlet at " + items + "</h1>");
-                out.println("<h1>Servlet FileUploadServlet at " + repository + "</h1>");
-                out.println("<h1>Servlet FileUploadServlet at " + file + "</h1>");
-                out.println("</body>");
-                out.println("</html>");
-            }
-               
-        } catch (FileUploadException ex) {
-            Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -137,7 +76,42 @@ public class FileUploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                response.setContentType("text/html;charset=UTF-8");
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+
+        ServletContext servletContext = this.getServletConfig().getServletContext();
+        File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+        factory.setRepository(repository);
+        ServletFileUpload upload = new ServletFileUpload(factory);
+
+        try {
+            List<FileItem> items = upload.parseRequest(request);
+            Iterator files = items.iterator();
+            
+            while(files.hasNext()) {
+                FileItem fileItem = (FileItem) files.next();
+                File file;
+                if(!fileItem.isFormField()){
+                    String fieldName = fileItem.getFieldName();
+                    String fileName = fileItem.getName();
+                    String contentType = fileItem.getContentType();
+                    boolean isInMemory = fileItem.isInMemory();
+                    long sizeInBytes = fileItem.getSize();
+                    if( fileName.lastIndexOf("\\") >= 0 ) {
+                      file = new File( filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
+                    } else {
+                      file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+                    }
+                    try {
+                        fileItem.write(file) ;
+                    } catch (Exception ex) {
+                        Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } catch (FileUploadException ex) {
+            Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
