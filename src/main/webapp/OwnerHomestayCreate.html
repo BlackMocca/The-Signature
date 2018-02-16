@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    body {
+      padding: 25px;
+      background: red;
+    }
+
+    .row {
+      background: yellow;
+    }
+
+    .col {
+      border: 1px solid slateblue;
+    }
+    
+    .navbar-wrapper {
+      padding: 15px;
+    }
+
+    div {
+      border: 1px solid slateblue;
+    }
+
+    .body-wrapper {
+      height: 85vh;
+    }
+
+    .add-homestay-btn {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .sidebar {
+      background: #fff;
+      color: #000;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .sidebar-selected {
+      color: #fff;
+      background: #6abcaa;
+    }
+
+    .btn.btn-square {
+      border-radius: 0;
+      color: #fff;
+      background: #8eb8d8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+
+    <!-- NAV BAR START -->
+    <div class="row justify-content-between navbar-wrapper">
+      <div class="col col-md-6 col-12 bd">
+        <div class="row">
+          <div class="col col-md-2 col-12">Logo</div>
+          <div class="col col-md-3 col-12">TRAVELLER</div>
+          <div class="col col-md-3 col-12">OWNER</div>
+        </div>
+      </div>
+      <div class="col col-md-6 col-12 bd">
+        <div class="row justify-content-end">
+          <div class="col col-md-3 col-12">Username</div>
+          <div class="col col-md-3 col-12">Logout</div>
+        </div>
+      </div>
+    </div>
+    <!-- NAV BAR END -->
+
+    <!-- BODY START -->
+    <div class="row body-wrapper">
+
+      <!-- SIDE BAR START -->
+      <div class="col col-md-4 col-12 bd">
+        <div class="row">
+          <div class="col col-12 bd sidebar sidebar-selected">
+            <h1>Management</h1>
+          </div>
+          <div class="col col-12 sidebar bd">
+            <h1>Request</h1>
+          </div>
+        </div>
+      </div>
+      <!-- SIDE BAR END -->
+
+      <!-- CONTENT START -->
+      <div class="col col-md-8 col-12 bd text-center">
+          <button class="btn btn-square add-homestay-btn">
+            ADD HOMESTAY
+          </button>
+      </div>
+      <!-- CONTENT END -->
+
+    </div>
+    <!-- BODY END -->
+
+  </div>
+</body>
+</html>
