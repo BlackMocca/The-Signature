@@ -63,7 +63,32 @@ public class FileUploadServlet extends HttpServlet {
             List<FileItem> items = upload.parseRequest(request);
             Iterator files = items.iterator();
             
-            
+            while(files.hasNext()) {
+                FileItem fileItem = (FileItem) files.next();
+                File file;
+                // get value from input
+                if(!fileItem.isFormField()){
+                    String fieldName = fileItem.getFieldName();
+                    String fileName = fileItem.getName();
+                    String contentType = fileItem.getContentType();
+                    boolean isInMemory = fileItem.isInMemory();
+                    long sizeInBytes = fileItem.getSize();
+                    
+                    // Write the file
+                
+                    if( fileName.lastIndexOf("\\") >= 0 ) {
+                      file = new File( filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
+                   } else {
+                      file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+                   }
+                    try {
+                        fileItem.write(file) ;
+                    } catch (Exception ex) {
+                        Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                   out.println("Uploaded Filename: " + fileName + "<br>");
+                }
+            }
              try (PrintWriter out = response.getWriter()) {
                 /* TODO output your page here. You may use following sample code. */
                 out.println("<!DOCTYPE html>");
