@@ -31,9 +31,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class FileUploadServlet extends HttpServlet {
     private boolean isMultipart;
     private String filePath;
+    private String pathToImage;
     
     public void init(){
-        filePath = ENV.getENV("PATH_PROJECT_SIGNATURE")+ "/src/main/webapp/images/";
+        pathToImage = "/src/main/webapp/images/";
+        filePath = ENV.getENV("PATH_PROJECT_SIGNATURE")+ pathToImage;
     }
     
     /**
@@ -45,6 +47,9 @@ public class FileUploadServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -78,40 +83,41 @@ public class FileUploadServlet extends HttpServlet {
             throws ServletException, IOException {
                 response.setContentType("text/html;charset=UTF-8");
         DiskFileItemFactory factory = new DiskFileItemFactory();
-
         ServletContext servletContext = this.getServletConfig().getServletContext();
         File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
         factory.setRepository(repository);
         ServletFileUpload upload = new ServletFileUpload(factory);
-
         try {
             List<FileItem> items = upload.parseRequest(request);
             Iterator files = items.iterator();
             
             while(files.hasNext()) {
                 FileItem fileItem = (FileItem) files.next();
-                File file;
                 if(!fileItem.isFormField()){
-                    String fieldName = fileItem.getFieldName();
-                    String fileName = fileItem.getName();
-                    String contentType = fileItem.getContentType();
-                    boolean isInMemory = fileItem.isInMemory();
-                    long sizeInBytes = fileItem.getSize();
-                    if( fileName.lastIndexOf("\\") >= 0 ) {
-                      file = new File( filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
-                    } else {
-                      file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
-                    }
-                    try {
-                        fileItem.write(file) ;
-                    } catch (Exception ex) {
-                        Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    System.out.println(FileUpload(fileItem));
                 }
             }
         } catch (FileUploadException ex) {
             Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(FileUploadServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    protected String FileUpload(FileItem fileItem) throws Exception{
+        File file;
+        String fieldName = fileItem.getFieldName();
+        String fileName = fileItem.getName();
+        String contentType = fileItem.getContentType();
+        boolean isInMemory = fileItem.isInMemory();
+        long sizeInBytes = fileItem.getSize();
+        if( fileName.lastIndexOf("\\") >= 0 ) {
+          file = new File( filePath + fileName.substring( fileName.lastIndexOf("\\"))) ;
+        } else {
+          file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+        }
+        fileItem.write(file);
+        return pathToImage + fileName.substring(fileName.lastIndexOf("\\")+1);
     }
 
     /**
