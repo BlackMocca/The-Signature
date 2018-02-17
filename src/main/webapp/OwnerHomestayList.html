@@ -80,18 +80,25 @@
     }
 
     .logout-btn {
-      background: #d4d4d4;
+      background: #d4d4d4 !important;
     }
 
     .navbar-menu {
       border-top: 5px solid #d4d4d4;
       border-left: 2.5px solid #d4d4d4;
       border-right: 2.5px solid #d4d4d4;
+      background: #fff;
     }
 
     .navbar-menu-selected {
       background: #6abcaa;
       color: #fff;
+    }
+
+    .navbar-username {
+      border: none !important;
+      background: unset;
+      border-top: 5px solid rgba(0,0,0,0) !important;
     }
 
     .navbar-menu-first {
@@ -142,11 +149,11 @@
       </div>
       <div class="col col-md-6 col-12 bd">
         <div class="row justify-content-end">
-          <div class="col col-md-3 col-12 navbar-menu navbar-menu-first">Username</div>
+          <div class="col col-md-3 col-12 navbar-menu navbar-menu-first navbar-username">Username</div>
           <div class="col col-md-2 col-12">
             <a href="#">
               <div class="row">
-                <div class="col navbar-menu logout-btn">LOGOUT</div>
+                <div class="col navbar-menu navbar-logout logout-btn">LOGOUT</div>
               </div>
             </a>
           </div>
