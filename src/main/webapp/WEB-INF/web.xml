@@ -4,9 +4,25 @@
         <servlet-name>HelloWorldServlet</servlet-name>
         <servlet-class>com.the.signature.servlets.HelloWorldServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>com.the.signature.servlets.FileUploadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomestayServlet</servlet-name>
+        <servlet-class>com.the.signature.servlets.HomestayServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorldServlet</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomestayServlet</servlet-name>
+        <url-pattern>/homestays</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
