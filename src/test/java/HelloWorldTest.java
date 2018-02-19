@@ -22,6 +22,7 @@ import static org.junit.Assert.*;
 public class HelloWorldTest extends ConnectDatabaseTest{
 
     public HelloWorldTest() {
+        initConnection();
     }
 
 
