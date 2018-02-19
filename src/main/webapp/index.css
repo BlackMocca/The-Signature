@@ -1,5 +1,6 @@
 body {
   background: #fffaee;
+  font-family: 'Barlow Condensed';
 }
 
 .row {
@@ -19,14 +20,19 @@ body {
   text-align: center;
 }
 
+.navbar-logo {
+  height: 21px;
+}
+
 div {
   /* border: 1px solid slateblue; */
 }
 
 .body-wrapper {
-  height: 83%;
+  height: auto;
+  min-height: 500px;
   margin: 0 25px 25px 25px;
-  background: #d4d4d4;
+  background: #efefef;
 }
 
 .add-homestay-btn {
@@ -68,4 +74,140 @@ a {
 a:hover {
   color: #000;
   text-decoration: none;
+}
+
+.homestay-row {
+  margin: 40px
+}
+
+.homestay-image {
+  background-position: center center;
+  background-size: cover;
+  height: auto;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .homestay-image {
+    min-height: 300px;
+  }
+}
+
+.homestay-detail {
+  height: 100px;
+}
+
+.homestay-detail div {
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: #fff;
+}
+
+.detail-value {
+  border-top: 5px solid #efefef;
+}
+
+.homestay-detail .detail-title {
+  background: #6abcaa;
+  color: #fff;
+  border-top: 5px solid #efefef;
+  border-left: 5px solid #efefef;
+  border-right: 5px solid #efefef;
+}
+
+.homestay-detail .price {
+  color: #6abcaa;
+}
+
+.homestay-detail .detail-value {
+  justify-content: left;
+}
+
+.sidebar-wrapper {
+  background: #fff;
+  border-top: 2.5px solid #efefef;
+  border-left: 5px solid #efefef;
+  border-right: 5px solid #efefef;
+  border-bottom: 5px solid #efefef;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-wrapper {
+    height: 100%;
+  }
+}
+
+.sidebar {
+  border-top: 2.5px solid #efefef;
+  border-bottom: 2.5px solid #efefef;
+}
+
+.sidebar-last {
+  border-bottom: 5px solid #efefef;
+}
+
+.logout-btn {
+  background: #efefef !important;
+}
+
+.navbar-menu {
+  border-top: 5px solid #efefef;
+  border-left: 2.5px solid #efefef;
+  border-right: 2.5px solid #efefef;
+  background: #fff;
+}
+
+.navbar-menu-selected {
+  background: #6abcaa;
+  color: #fff;
+}
+
+.navbar-username {
+  border: none !important;
+  background: unset;
+  border-top: 5px solid rgba(0,0,0,0) !important;
+}
+
+.navbar-menu-first {
+  border-left: 5px solid #efefef;
+}
+
+.navbar-menu-last {
+  border-right: 5px solid #efefef;
+}
+
+.add-home-wrapper {
+  margin-right: 40px;
+  margin-bottom: 40px;
+  padding-right: 0;
+  text-align: right;
+}
+
+
+/* SWEET ALERT */
+.swal-overlay {
+  background-color: rgba(0,0,0,0.6);
+}
+.swal-title {
+  font-size: 25px;
+}
+.swal-text {
+  font-size: 22px;
+}
+.swal-modal {
+  border-radius: 0;
+}
+.swal-footer {
+  text-align: center;
+}
+.swal-button {
+  width: 200px;
+  background: #8eb8d8;
+  font-size: 20px;
+  border-radius: 0;
+}
+.swal-button:focus {
+  box-shadow: unset;
 }

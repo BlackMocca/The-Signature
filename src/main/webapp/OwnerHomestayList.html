@@ -10,111 +10,8 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="navbar.css">
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-  <style>
-    .homestay-row {
-      margin: 40px
-    }
-
-    .homestay-image {
-      background-position: center center;
-      background-size: cover;
-      height: auto;
-      margin-top: 5px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .homestay-image {
-        min-height: 300px;
-      }
-    }
-
-    .homestay-detail {
-      height: 100px;
-    }
-
-    .homestay-detail div {
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      background: #fff;
-    }
-
-    .detail-value {
-      border-top: 5px solid #d4d4d4;
-    }
-
-    .homestay-detail .detail-title {
-      background: #6abcaa;
-      color: #fff;
-      border-top: 5px solid #d4d4d4;
-      border-left: 5px solid #d4d4d4;
-      border-right: 5px solid #d4d4d4;
-    }
-
-    .homestay-detail .price {
-      color: #6abcaa;
-    }
-
-    .homestay-detail .detail-value {
-      justify-content: left;
-    }
-
-    .sidebar-wrapper {
-      background: #fff;
-      border-top: 2.5px solid #d4d4d4;
-      border-left: 5px solid #d4d4d4;
-      border-right: 5px solid #d4d4d4;
-      border-bottom: 5px solid #d4d4d4;
-    }
-
-    .sidebar {
-      border-top: 2.5px solid #d4d4d4;
-      border-bottom: 2.5px solid #d4d4d4;
-    }
-
-    .sidebar-last {
-      border-bottom: 5px solid #d4d4d4;
-    }
-
-    .logout-btn {
-      background: #d4d4d4 !important;
-    }
-
-    .navbar-menu {
-      border-top: 5px solid #d4d4d4;
-      border-left: 2.5px solid #d4d4d4;
-      border-right: 2.5px solid #d4d4d4;
-      background: #fff;
-    }
-
-    .navbar-menu-selected {
-      background: #6abcaa;
-      color: #fff;
-    }
-
-    .navbar-username {
-      border: none !important;
-      background: unset;
-      border-top: 5px solid rgba(0,0,0,0) !important;
-    }
-
-    .navbar-menu-first {
-      border-left: 5px solid #d4d4d4;
-    }
-
-    .navbar-menu-last {
-      border-right: 5px solid #d4d4d4;
-    }
-
-    .add-home-wrapper {
-      margin: 20px 0;
-      padding-right: 0;
-      text-align: right;
-    }
-  </style>
 </head>
 
 <body>
@@ -127,7 +24,9 @@
           <div class="col col-md-2 col-12">
             <a href="#">
               <div class="row">
-                <div class="col navbar-menu navbar-menu-first">Logo</div>
+                <div class="col navbar-menu navbar-menu-first">
+                  <img class="navbar-logo" src="logo.png" alt="">
+                </div>
               </div>
             </a>
           </div>
@@ -192,9 +91,9 @@
 
       <!-- CONTENT START -->
       <div class="col col-md-8 col-12 bd text-center">
-        <div class="row">
 
-          <!-- HOMESTAY ROW START -->
+        <!-- HOMESTAY ROW START -->
+        <div class="row">
           <div class="col homestay-row">
             <div class="row">
               <div class="col col-md-6 col-12 homestay-image" style="background-image: url('https://lumiere-a.akamaihd.net/v1/images/r_moana_header_poststreet_mobile_bd574a31.jpeg');">
@@ -216,24 +115,27 @@
                   <div class="col-12 homestay-detail">
                     <div class="row">
                       <div class="col-4 detail-title">PRICE</div>
-                      <div class="col-8 price detail-value">10000000 Baht.</div>
+                      <div class="col-8 price detail-value">10000000 THB/ROOM</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- HOMESTAY ROW END -->
-
-            <!-- ADD HOME BUTTON START -->
-            <div class="row justify-content-end">
-              <div class="col col-md-4 add-home-wrapper">
-                <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">ADD HOMESTAY</button>
-              </div>
-            </div>
-            <!-- ADD HOME BUTTON END -->
-
           </div>
         </div>
+        <!-- HOMESTAY ROW END -->
+
+        <!-- ADD HOME BUTTON START -->
+        <div class="row">
+          <div class="col add-home-wrapper">
+            <div class="row justify-content-end">
+                <div class="col col-md-4 col-12">
+                    <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">ADD HOMESTAY</button>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <!-- ADD HOME BUTTON END -->
 
       </div>
       <!-- CONTENT END -->
