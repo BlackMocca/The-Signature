@@ -8,6 +8,7 @@ package com.the.signature.servlets;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -51,7 +52,7 @@ public class HomestayServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     @Override
@@ -70,22 +71,74 @@ public class HomestayServlet extends HttpServlet {
             Iterator files = items.iterator();
             while(files.hasNext()){
                 FileItem item = (FileItem) files.next();
-                if(item.isFormField()){
+                if(!item.isFormField()){
+                    String fieldName = item.getFieldName();
+                    String fileName = item.getName();
+                    data.put(fieldName, fileName.toLowerCase());
+                } else {
                     String name = item.getFieldName();
                     String value = item.getString();
                     data.put(name, value);
                 }
             }
-            RequestDispatcher rd = request.getRequestDispatcher("upload");
-            rd.include(request, response);
-            Map<String,String> pathImage = (HashMap) request.getAttribute("pathImage");
+            boolean validate = validateHomestay(data);
+            System.out.println(validate);
+            if (validate){
+                RequestDispatcher rd = request.getRequestDispatcher("upload");
+                rd.include(request, response);
+                Map<String,ArrayList<String>> pathImage = (HashMap) request.getAttribute("pathImage");
+                System.out.println(pathImage);
+            }
         } catch (FileUploadException ex) {
             Logger.getLogger(HomestayServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
            
     }
     
-
+    protected boolean validateHomestay(Map<String,String> data) {
+        String[] documentTypeCheck = { ".png", ".jpg", ".jpeg", ".pdf" };
+        if (data.containsKey("Hourse_document")){
+            boolean check = false;
+            String fileName = data.get("Hourse_document");
+            for (String type : documentTypeCheck) {
+               if(fileName.contains(type)){ 
+                   check = true;
+                   break;
+               }
+            }
+        }
+        if (data.containsKey("Homestay_License_document")){
+            boolean check = false;
+            String fileName = data.get("Hourse_document");
+            for (String type : documentTypeCheck) {
+               if(fileName.contains(type)){ 
+                   check = true;
+                   break;
+               }
+            }
+        }
+        if (data.containsKey("Homestay_name")){
+            if(data.get("Homestay_name") == null || data.get("Homestay_name").equalsIgnoreCase(""))
+               return false; 
+        }
+        if (data.containsKey("Telno")){
+            if(data.get("Telno") == null || data.get("Telno").equalsIgnoreCase(""))
+               return false; 
+        }
+        if (data.containsKey("Category")){
+            if(data.get("Category") == null || data.get("Category").equalsIgnoreCase("") && data.get("Category") instanceof String)
+               return false; 
+        }
+        if (data.containsKey("Open_time")){
+            if(data.get("Open_time") == null || data.get("Open_time").equalsIgnoreCase(""))
+               return false; 
+        }
+        if (data.containsKey("Close_time")){
+            if(data.get("Close_time") == null || data.get("Close_time").equalsIgnoreCase(""))
+               return false; 
+        }
+        return true;
+    }
 
 
     @Override
