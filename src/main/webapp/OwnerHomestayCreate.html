@@ -10,6 +10,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="navbar.css">
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
@@ -18,69 +19,75 @@
 
     <!-- NAV BAR START -->
     <div class="row justify-content-between navbar-wrapper">
-      <div class="col col-md-6 col-12 bd">
-        <div class="row">
-          <div class="col col-md-2 col-12">
-            <a href="#">
-              <div class="row">
-                <div class="col navbar-menu">Logo</div>
-              </div>
-            </a>
+        <div class="col col-md-6 col-12 navbar-left-menu">
+          <div class="row">
+            <div class="col col-md-2 col-12">
+              <a href="#">
+                <div class="row">
+                  <div class="col navbar-menu navbar-menu-first">
+                    <img class="navbar-logo" src="logo.png" alt="">
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col col-md-3 col-12">
+              <a href="#">
+                <div class="row">
+                  <div class="col navbar-menu">TRAVELLER</div>
+                </div>
+              </a>
+            </div>
+            <div class="col col-md-3 col-12">
+              <a href="#">
+                <div class="row">
+                  <div class="col navbar-menu navbar-menu-last navbar-menu-selected">OWNER</div>
+                </div>
+              </a>
+            </div>
           </div>
-          <div class="col col-md-3 col-12">
-            <a href="#">
-              <div class="row">
-                <div class="col navbar-menu">TRAVELLER</div>
-              </div>
-            </a>
-          </div>
-          <div class="col col-md-3 col-12">
-            <a href="#">
-              <div class="row">
-                <div class="col navbar-menu">OWNER</div>
-              </div>
-            </a>
+        </div>
+        <div class="col col-md-6 col-12 bd">
+          <div class="row justify-content-end">
+            <div class="col col-md-3 col-12 navbar-menu navbar-menu-first navbar-username">Username</div>
+            <div class="col col-md-2 col-12">
+              <a href="#">
+                <div class="row">
+                  <div class="col navbar-menu navbar-logout logout-btn">LOGOUT</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col col-md-6 col-12 bd">
-        <div class="row justify-content-end">
-          <div class="col col-md-3 col-12 navbar-menu navbar-username">Username</div>
-          <div class="col col-md-2 col-12">
-            <a href="#">
-              <div class="row">
-                <div class="col navbar-menu">LOGOUT</div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- NAV BAR END -->
+      <!-- NAV BAR END -->
 
     <!-- BODY START -->
     <div class="row body-wrapper">
 
       <!-- SIDE BAR START -->
-      <div class="col col-md-4 col-12 bd">
-        <div class="row">
-          <div class="col col-12 bd">
-            <a href="#">
-              <div class="row">
-                <div class="col sidebar sidebar-selected"><h1>MANAGEMENT</h1></div>
-              </div>
-            </a>
-          </div>
-          <div class="col col-12 bd">
+      <div class="col col-md-4 col-12 sidebar-wrapper bd">
+          <div class="row">
+            <div class="col col-12 bd">
               <a href="#">
                 <div class="row">
-                  <div class="col sidebar"><h1>REQUEST</h1></div>
+                  <div class="col sidebar sidebar-selected">
+                    <h1>MANAGEMENT</h1>
+                  </div>
                 </div>
               </a>
             </div>
+            <div class="col col-12 bd">
+              <a href="#">
+                <div class="row">
+                  <div class="col sidebar sidebar-last">
+                    <h1>REQUEST</h1>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- SIDE BAR END -->
+        <!-- SIDE BAR END -->
 
       <!-- CONTENT START -->
       <div class="col col-md-8 col-12 bd text-center">
@@ -94,6 +101,17 @@
     <!-- BODY END -->
 
   </div>
+
+
+  <!-- SWEET ALERT START -->
+  <script>
+    // IF CREATE COMPLETE
+    if (true) {
+      swal("Completed!", "Please wait for contact.", "success");
+    }
+  </script>
+  <!-- SWEET ALERT END -->
+
 </body>
 
 </html>
