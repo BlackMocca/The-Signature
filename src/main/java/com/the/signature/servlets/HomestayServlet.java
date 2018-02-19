@@ -83,11 +83,36 @@ public class HomestayServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
-        FileUploadServlet fileUpload = new FileUploadServlet();
-        RequestDispatcher rd = request.getRequestDispatcher("upload");
-        rd.include(request, response);
-        Map<String,String> pathImage = (HashMap) request.getAttribute("pathImage");
+        response.setContentType("text/html;charset=UTF-8");
+        
+        Map<String, String> data = new HashMap<String,String>();
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        ServletContext servletContext = this.getServletConfig().getServletContext();
+        File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+        factory.setRepository(repository);
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        try {
+            List<FileItem> items = upload.parseRequest(request);
+            Iterator files = items.iterator();
+            while(files.hasNext()){
+                FileItem item = (FileItem) files.next();
+                if(item.isFormField()){
+                    String name = item.getFieldName();
+                    String value = item.getString();
+                    data.put(name, value);
+                }
+            }
+            RequestDispatcher rd = request.getRequestDispatcher("upload");
+            rd.include(request, response);
+            Map<String,String> pathImage = (HashMap) request.getAttribute("pathImage");
+        } catch (FileUploadException ex) {
+            Logger.getLogger(HomestayServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+    }
+    
+    protected boolean validateHomestay(Map<String,String> data) {
+        
     }
 
     /**
