@@ -178,6 +178,17 @@ public class Homestay {
 
         return isJPG;
     }
+    
+    public boolean isPNGFile(String filetype){
+        boolean isPNG = false;
+        if (filetype.endsWith(".png") || filetype.endsWith(".PNG")) {
+            isPNG = true;
+        } else {
+            isPNG = false;
+        }
+
+        return isPNG;
+    }
 
     public boolean checkHomestayNameRepeat(Map<String, Object> data) {
         boolean checkNameRepeat = false;
