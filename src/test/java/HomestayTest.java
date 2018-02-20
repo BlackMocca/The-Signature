@@ -71,16 +71,16 @@ public class HomestayTest extends ConnectDatabaseTest {
     
     @Test
     public void testIsJPGFile(){
-        String pdfFileTest = "test.jpg";
-        boolean expect = Homestay.isJPGFile(pdfFileTest);
+        String jpgFileTest = "test.jpg";
+        boolean expect = Homestay.isJPGFile(jpgFileTest);
         
         Assert.assertEquals(true, expect);
     }
     
     @Test
     public void testIsPNGFile(){
-        String pdfFileTest = "test.png";
-        boolean expect = Homestay.isPNGFile(pdfFileTest);
+        String pngFileTest = "test.png";
+        boolean expect = Homestay.isPNGFile(pngFileTest);
         
         Assert.assertEquals(true, expect);
     }
