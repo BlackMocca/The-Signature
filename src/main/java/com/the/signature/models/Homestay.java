@@ -193,6 +193,10 @@ public class Homestay {
     public static boolean isPDFFile(String fileType){
         return true;
     }
+    
+    public static boolean isJPGFile(String fileType){
+        return true;
+    }
 
     @Override
     public String toString() {
