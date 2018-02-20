@@ -5,6 +5,7 @@
  */
 package com.the.signature.servlets;
 
+import com.the.signature.models.Homestay;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -59,7 +61,7 @@ public class HomestayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Map<String, String> data = new HashMap<String,String>();
+        Map<String, Object> data = new HashMap<String,Object>();
         List<FileItem> uploadFileItem = new ArrayList<FileItem>();
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletContext servletContext = this.getServletConfig().getServletContext();
@@ -83,14 +85,22 @@ public class HomestayServlet extends HttpServlet {
                 }
             }
             boolean validate = validateHomestay(data);
-            System.out.println(validate);
             if (validate){
                 RequestDispatcher rd = request.getRequestDispatcher("upload");
                 request.setAttribute("fileItem", uploadFileItem);
                 rd.include(request, response);
                 
-                Map<String,ArrayList<String>> pathImage = (HashMap) request.getAttribute("pathImage");
-                System.out.println(pathImage);
+                Map<String,ArrayList<Object>> pathImage = (HashMap) request.getAttribute("pathImage");
+                Object[] keys = pathImage.keySet().toArray();
+                for (int i = 0; i < keys.length; i++){
+                    String key = (String) keys[i];
+                    String formatedValue = TypeArrayListToString(pathImage.get(key));
+                    data.put(key, formatedValue);
+                }
+                data.put("User_id",1);
+                data.put("Status", "Verifying");
+                int insert = Homestay.createHomestay(data);
+                System.out.println(insert);
             }
         } catch (Exception ex) {
             Logger.getLogger(HomestayServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,11 +108,11 @@ public class HomestayServlet extends HttpServlet {
            
     }
     
-    protected boolean validateHomestay(Map<String,String> data) {
+    protected boolean validateHomestay(Map<String,Object> data) {
         String[] documentTypeCheck = { ".png", ".jpg", ".jpeg", ".pdf" };
         if (data.containsKey("Hourse_document")){
             boolean check = false;
-            String fileName = data.get("Hourse_document");
+            String fileName = (String)data.get("Hourse_document");
             for (String type : documentTypeCheck) {
                if(fileName.contains(type)){ 
                    check = true;
@@ -112,7 +122,7 @@ public class HomestayServlet extends HttpServlet {
         }
         if (data.containsKey("Homestay_License_document")){
             boolean check = false;
-            String fileName = data.get("Hourse_document");
+            String fileName = (String)data.get("Hourse_document");
             for (String type : documentTypeCheck) {
                if(fileName.contains(type)){ 
                    check = true;
@@ -121,26 +131,40 @@ public class HomestayServlet extends HttpServlet {
             }
         }
         if (data.containsKey("Homestay_name")){
-            if(data.get("Homestay_name") == null || data.get("Homestay_name").equalsIgnoreCase(""))
+            if(data.get("Homestay_name") == null || ((String)data.get("Homestay_name")).equalsIgnoreCase(""))
                return false; 
         }
         if (data.containsKey("Telno")){
-            if(data.get("Telno") == null || data.get("Telno").equalsIgnoreCase(""))
+            if(data.get("Telno") == null || ((String)data.get("Telno")).equalsIgnoreCase(""))
                return false; 
         }
         if (data.containsKey("Category")){
-            if(data.get("Category") == null || data.get("Category").equalsIgnoreCase("") && data.get("Category") instanceof String)
+            if(data.get("Category") == null || ((String)data.get("Category")).equalsIgnoreCase("") && data.get("Category") instanceof String)
                return false; 
         }
         if (data.containsKey("Open_time")){
-            if(data.get("Open_time") == null || data.get("Open_time").equalsIgnoreCase(""))
+            if(data.get("Open_time") == null || ((String)data.get("Open_time")).equalsIgnoreCase(""))
                return false; 
         }
         if (data.containsKey("Close_time")){
-            if(data.get("Close_time") == null || data.get("Close_time").equalsIgnoreCase(""))
+            if(data.get("Close_time") == null || ((String)data.get("Close_time")).equalsIgnoreCase(""))
                return false; 
         }
         return true;
+    }
+    
+    protected static String TypeArrayListToString(ArrayList<Object> values){
+        int countValue = values.size();
+        String value = "";
+        Iterator iter = values.iterator();
+        while(iter.hasNext()){
+            value += (String) iter.next();
+            if (countValue > 1){
+                --countValue;
+                value += ",";
+            }
+        }
+        return value;
     }
 
 
