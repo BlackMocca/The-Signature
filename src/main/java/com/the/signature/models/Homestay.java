@@ -156,7 +156,7 @@ public class Homestay {
         this.rule = rule;
     }
 
-    public Map<String, Object> createHomestay(Map<String, Object> data) {
+    public static int createHomestay(Map<String, Object> data) {
         try {
             Connection con = ConnectionBuilder.getConnection();
             String sql = "insert into signature.Homestays "
@@ -177,12 +177,12 @@ public class Homestay {
             pstmt.setString(11, (String) data.get("Open_time"));
             pstmt.setString(12, (String) data.get("Close_time"));
             pstmt.setString(13, (String) data.get("Status"));
-            pstmt.executeUpdate();
+            return pstmt.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return data;
+        return 0;
     }
 
     @Override
