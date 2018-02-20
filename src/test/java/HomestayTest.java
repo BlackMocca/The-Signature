@@ -63,6 +63,10 @@ public class HomestayTest extends ConnectDatabaseTest {
 
     @Test
     public void testIsPDFFile(){
-
+        String pdfFileTest = "test.pdf";
+        boolean expect = Homestay.isPDFFile(pdfFileTest);
+        
+        Assert.assertEquals(true, expect);
     }
+    
 }
