@@ -8,6 +8,7 @@ package com.the.signature.models;
 import com.the.signature.utils.ConnectionBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -155,6 +156,29 @@ public class Homestay {
     public void setRule(String rule) {
         this.rule = rule;
     }
+    
+    public boolean checkHomestayNameRepeat(Map<String, Object> data){
+        boolean checkNameRepeat = false;
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            String sql = "select Homestay_name from signature.Homestays where Homestay_name = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, (String) data.get("Homestay_name"));
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                String homestayName = rs.getString("Homestay_name");
+                if(homestayName.equals((String) data.get("Homestay_name"))){
+                    checkNameRepeat = true;
+                }else{
+                    checkNameRepeat = false;
+                }
+            }
+            con.close();
+        }catch(Exception ex){
+            System.out.println(ex);
+        }
+        return checkNameRepeat;
+    }
 
     public Map<String, Object> createHomestay(Map<String, Object> data) {
         try {
@@ -178,7 +202,8 @@ public class Homestay {
             pstmt.setString(12, (String) data.get("Close_time"));
             pstmt.setString(13, (String) data.get("Status"));
             pstmt.executeUpdate();
-
+            con.close();
+            
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
