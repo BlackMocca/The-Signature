@@ -52,7 +52,13 @@ public class HomestayTest extends ConnectDatabaseTest {
 
     @Test
     public void testCheckHomestayNameRepeat() {
+        Map<String, Object> data = new HashMap<String, Object>();
+        Homestay homestay = new Homestay();
         
+        data.put("Homestay_name", "huaghome");
+        boolean expect = homestay.checkHomestayNameRepeat(data);
+        
+        Assert.assertEquals(true, expect);
     }
 
 }
