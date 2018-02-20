@@ -197,6 +197,10 @@ public class Homestay {
     public static boolean isJPGFile(String fileType){
         return true;
     }
+    
+    public static boolean isPNGFile(String fileType){
+        return true;
+    }
 
     @Override
     public String toString() {
