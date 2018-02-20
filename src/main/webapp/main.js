@@ -51,7 +51,16 @@
   $("#homestay-create-form").validate({
     ignore: "",
     rules: {
-      cover: 'required'
+      cover: 'required',
+      homestay_price: {
+        required: true,
+        number: true,
+        min: 0
+      },
+      homestay_desc: {
+        required: true,
+        minlength: 130
+      }
     },
     errorClass: 'is-invalid',
     validClass: 'is-valid',
