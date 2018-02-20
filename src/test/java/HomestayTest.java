@@ -71,6 +71,9 @@ public class HomestayTest extends ConnectDatabaseTest {
     
     @Test
     public void testIsJPGFile(){
+        String pdfFileTest = "test.jpg";
+        boolean expect = Homestay.isJPGFile(pdfFileTest);
         
+        Assert.assertEquals(true, expect);
     }
 }
