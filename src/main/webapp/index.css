@@ -22,7 +22,7 @@ body {
   /* border: 1px solid slateblue; */
 }
 div {
-  /* border: 1px solid slateblue; */
+  /* border: .5px solid slateblue; */
 }
 .btn.btn-square {
   border-radius: 0;
@@ -189,4 +189,11 @@ a:hover {
 }
 .swal-button:focus {
   box-shadow: unset;
+}
+
+/* ICON BLOCK */
+.icon-block {
+  background: #6abcaa;
+  color: #fff;
+  border-color: #6abcaa;
 }

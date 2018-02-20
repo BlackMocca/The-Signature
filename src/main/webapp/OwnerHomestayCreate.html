@@ -8,9 +8,11 @@
   <title>Owner Homestay Create</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="tempusdominus-bootstrap-4.min.css" />
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="navbar.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="ownerHomestayCreate.css">
 </head>
 
@@ -127,12 +129,20 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="text" placeholder="" name="" required>
+                            <label>Province*</label>
+                            <input class="form-control" type="text" placeholder="" name="homestay-prov" required>
                         </div>
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="text" placeholder="" name="" required>
+                            <label>Dicstrict*</label>
+                            <input class="form-control" type="text" placeholder="" name="homestay-disc" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sub-Dicstrict*</label>
+                            <input class="form-control" type="text" placeholder="" name="homestay-sub-disc" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Detail*</label>
+                            <textarea class="form-control" type="text" placeholder="" rows="5" name="homestay-addr-detail" required></textarea>
                         </div>
                       </div>
                     </div>
@@ -144,12 +154,27 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="text" placeholder="" name="" required>
+                            <label>Tel No.*</label>
+                            <input class="form-control" type="text" placeholder="" name="homestay-telno" required>
                         </div>
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="text" placeholder="" name="" required>
+                            <label>Operation Time*</label><br />
+                            <label>Open-Time</label>
+                            <div class="input-group date" id="homestay-open-time" data-target-input="nearest">
+                              <input type="text" id="open-time-input" class="form-control datetimepicker-input" data-target="#homestay-open-time" name="homestay-open-time" required/>
+                              <div class="input-group-append homestay-open-icon" data-target="#homestay-open-time" data-toggle="datetimepicker">
+                                  <div class="input-group-text icon-block"><i class="far fa-clock"></i></div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Close-Time</label>
+                            <div class="input-group date" id="homestay-close-time" data-target-input="nearest">
+                              <input type="text" id="close-time-input" class="form-control datetimepicker-input" data-target="#homestay-close-time" name="homestay-close-time" required/>
+                              <div class="input-group-append" data-target="#homestay-close-time" data-toggle="datetimepicker">
+                                  <div class="input-group-text icon-block"><i class="far fa-clock"></i></div>
+                              </div>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -168,8 +193,8 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <textarea class="form-control" type="text" placeholder="" name="" required></textarea>
+                            <label>Homestay Description*</label>
+                            <textarea class="form-control" type="text" placeholder="" rows="5" name="homestay-desc" required></textarea>
                         </div>
                       </div>
                     </div>
@@ -181,8 +206,8 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="text" placeholder="" name="" required>
+                            <label>Homestay Rules and Condition*</label>
+                            <textarea class="form-control" type="text" placeholder="" rows="5" name="homestay-rules-cond" required></textarea>
                         </div>
                       </div>
                     </div>
@@ -201,12 +226,12 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="file" placeholder="" name="" required>
+                            <label>Open License* (.pdf, .jpg, .png only)</label>
+                            <input class="form-control" type="file" placeholder="" name="open-license" required>
                         </div>
                         <div class="form-group">
-                            <label>Form 1</label>
-                            <input class="form-control" type="file" placeholder="" name="" required>
+                            <label>Copy of ID Card* (.pdf, .jpg, .png only)</label>
+                            <input class="form-control" type="file" placeholder="" name="copy-idcard" required>
                         </div>
                       </div>
                     </div>
@@ -218,7 +243,7 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Form 1</label>
+                            <label>Room / Night*</label>
                             <input class="form-control" type="Number" placeholder="" name="" required>
                         </div>
                       </div>
@@ -261,6 +286,8 @@
   crossorigin="anonymous"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+  <script src="moment.js"></script>
+  <script src="tempusdominus-bootstrap-4.min.js"></script>
   <script src="main.js"></script>
 </body>
 

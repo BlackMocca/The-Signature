@@ -74,6 +74,10 @@
         element.addClass('dis-none')
         $('#img-3').addClass('img-input-error')
         return
+      } else if (elementId == 'open-time-input') {
+        return
+      } else if (elementId == 'close-time-input') {
+        return
       } else {
         error.addClass('invalid-feedback')
       }
@@ -111,6 +115,16 @@
     if ($('#img-3').hasClass('img-input-error')) {
       $('#img-3').removeClass('img-input-error')
     }
+  });
+
+  // HOMESTAY DATETIME PICKER
+
+  $('#homestay-open-time').datetimepicker({
+    format: 'LT'
+  });
+
+  $('#homestay-close-time').datetimepicker({
+    format: 'LT'
   });
 
 });
