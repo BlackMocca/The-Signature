@@ -156,8 +156,21 @@ public class Homestay {
     public void setRule(String rule) {
         this.rule = rule;
     }
+
+    public boolean isPDFFile(String filetype) {
+        boolean isPDF = false;
+        if (filetype.endsWith(".pdf") || filetype.endsWith(".PDF")) {
+            isPDF = true;
+        } else {
+            isPDF = false;
+        }
+
+        return isPDF;
+    }
     
-    public boolean checkHomestayNameRepeat(Map<String, Object> data){
+    
+
+    public boolean checkHomestayNameRepeat(Map<String, Object> data) {
         boolean checkNameRepeat = false;
         try {
             Connection con = ConnectionBuilder.getConnection();
@@ -165,16 +178,16 @@ public class Homestay {
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, (String) data.get("Homestay_name"));
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 String homestayName = rs.getString("Homestay_name");
-                if(homestayName.equals((String) data.get("Homestay_name"))){
+                if (homestayName.equals((String) data.get("Homestay_name"))) {
                     checkNameRepeat = true;
-                }else{
+                } else {
                     checkNameRepeat = false;
                 }
             }
             con.close();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex);
         }
         return checkNameRepeat;
@@ -203,7 +216,7 @@ public class Homestay {
             pstmt.setString(13, (String) data.get("Status"));
             pstmt.executeUpdate();
             con.close();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
