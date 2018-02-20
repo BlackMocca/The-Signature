@@ -69,4 +69,8 @@ public class HomestayTest extends ConnectDatabaseTest {
         Assert.assertEquals(true, expect);
     }
     
+    @Test
+    public void testIsJPGFile(){
+        
+    }
 }
