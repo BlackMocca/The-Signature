@@ -47,4 +47,5 @@ public class HomestayTest extends ConnectDatabaseTest {
         
         Assert.assertEquals(1, expect);
    }
+    
 }

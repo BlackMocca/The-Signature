@@ -5,6 +5,8 @@
  */
 package com.the.signature.models;
 
+import com.the.signature.utils.ConnectionBuilder;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
@@ -154,7 +156,7 @@ public class Homestay {
         this.rule = rule;
     }
 
-    public void createHomestay(Map<String, Object> data) {
+    public static int createHomestay(Map<String, Object> data) {
         try {
             Connection con = ConnectionBuilder.getConnection();
             String sql = "insert into signature.Homestays "
@@ -162,25 +164,27 @@ public class Homestay {
                     + ", Homestay_License_document, Description, Rule, Telno, Category, Open_time, Close_time, Status)"
                     + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1, data.get("User_id"));
-            pstmt.setString(2, data.get("Homestay_name"));
-            pstmt.setString(3, data.get("Content_image"));
-            pstmt.setString(4, data.get("Cover_img"));
-            pstmt.setString(5, data.get("Hourse_document"));
-            pstmt.setString(6, data.get("Homestay_License_document"));
-            pstmt.setString(7, data.get("Description"));
-            pstmt.setString(8, data.get("Rule"));
-            pstmt.setString(9, data.get("Telno"));
-            pstmt.setString(10, data.get("Category"));
-            pstmt.setString(11, data.get("Open_time"));
-            pstmt.setString(12, data.get("Close_time"));
-            pstmt.setString(13, data.get("Status"));
-            pstmt.executeUpdate();
+            pstmt.setInt(1, (int) data.get("User_id"));
+            pstmt.setString(2, (String) data.get("Homestay_name"));
+            pstmt.setString(3, (String) data.get("Content_image"));
+            pstmt.setString(4, (String) data.get("Cover_img"));
+            pstmt.setString(5, (String) data.get("Hourse_document"));
+            pstmt.setString(6, (String) data.get("Homestay_License_document"));
+            pstmt.setString(7, (String) data.get("Description"));
+            pstmt.setString(8, (String) data.get("Rule"));
+            pstmt.setString(9, (String) data.get("Telno"));
+            pstmt.setString(10, (String) data.get("Category"));
+            pstmt.setString(11, (String) data.get("Open_time"));
+            pstmt.setString(12, (String) data.get("Close_time"));
+            pstmt.setString(13, (String) data.get("Status"));
+            
+            return pstmt.executeUpdate();
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return data;
+        return 0;
     }
 
     @Override
