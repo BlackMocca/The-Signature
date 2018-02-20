@@ -85,20 +85,23 @@ public class FileUploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 response.setContentType("text/html;charset=UTF-8");
-        DiskFileItemFactory factory = new DiskFileItemFactory();
-        ServletContext servletContext = this.getServletConfig().getServletContext();
-        File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
-        factory.setRepository(repository);
-        ServletFileUpload upload = new ServletFileUpload(factory);
         try {
-            List<FileItem> items = upload.parseRequest(request);
-            Iterator files = items.iterator();
-            Map<String,String> pathImage = new HashMap<String,String>();
+            Iterator files = ((ArrayList)request.getAttribute("fileItem")).iterator();
+            Map<String,ArrayList<String>> pathImage = new HashMap<String,ArrayList<String>>();
+            ArrayList<String> pathList = new ArrayList<String>();
             while(files.hasNext()) {
                 FileItem fileItem = (FileItem) files.next();
                 if(!fileItem.isFormField()){
                     String path = FileUpload(fileItem);
-                    pathImage.put(fileItem.getFieldName(), path);
+                    String key = fileItem.getFieldName();
+                    if(pathImage.containsKey(fileItem.getFieldName())){
+                        pathList = pathImage.get(fileItem.getFieldName());
+                        pathList.add(path);
+                    }else{
+                        pathList = new ArrayList<String>();
+                        pathList.add(path);
+                    }
+                    pathImage.put(key, pathList);
                 }
             }
             request.setAttribute("pathImage", pathImage);

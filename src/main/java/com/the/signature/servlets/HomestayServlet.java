@@ -59,8 +59,8 @@ public class HomestayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         Map<String, String> data = new HashMap<String,String>();
+        List<FileItem> uploadFileItem = new ArrayList<FileItem>();
         DiskFileItemFactory factory = new DiskFileItemFactory();
         ServletContext servletContext = this.getServletConfig().getServletContext();
         File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
@@ -75,6 +75,7 @@ public class HomestayServlet extends HttpServlet {
                     String fieldName = item.getFieldName();
                     String fileName = item.getName();
                     data.put(fieldName, fileName.toLowerCase());
+                    uploadFileItem.add(item);
                 } else {
                     String name = item.getFieldName();
                     String value = item.getString();
@@ -85,11 +86,13 @@ public class HomestayServlet extends HttpServlet {
             System.out.println(validate);
             if (validate){
                 RequestDispatcher rd = request.getRequestDispatcher("upload");
+                request.setAttribute("fileItem", uploadFileItem);
                 rd.include(request, response);
+                
                 Map<String,ArrayList<String>> pathImage = (HashMap) request.getAttribute("pathImage");
                 System.out.println(pathImage);
             }
-        } catch (FileUploadException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(HomestayServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
            
