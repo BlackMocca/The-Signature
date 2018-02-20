@@ -52,6 +52,13 @@
     ignore: "",
     rules: {
       cover: 'required',
+      open_license: {
+        required: true,
+        extension: "pdf,jpg,png"
+      },
+      copy_idcard: {
+        extension: "pdf,jpg,png"
+      },
       homestay_price: {
         required: true,
         number: true,
@@ -60,6 +67,11 @@
       homestay_desc: {
         required: true,
         minlength: 130
+      },
+      homestay_telno: {
+        number: true,
+        minlength: 9,
+        maxlength: 10
       }
     },
     errorClass: 'is-invalid',
