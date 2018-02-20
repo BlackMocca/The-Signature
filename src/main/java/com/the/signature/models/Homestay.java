@@ -168,7 +168,16 @@ public class Homestay {
         return isPDF;
     }
     
-    
+    public boolean isJPGFile(String filetype){
+        boolean isJPG = false;
+        if (filetype.endsWith(".jpg") || filetype.endsWith(".JPG")) {
+            isJPG = true;
+        } else {
+            isJPG = false;
+        }
+
+        return isJPG;
+    }
 
     public boolean checkHomestayNameRepeat(Map<String, Object> data) {
         boolean checkNameRepeat = false;
