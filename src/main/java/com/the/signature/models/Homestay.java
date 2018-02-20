@@ -189,6 +189,10 @@ public class Homestay {
     public boolean checkHomestayNameRepeat(Map<String, Object> data) {
         return true;
     }
+    
+    public static boolean isPDFFile(String fileType){
+        return true;
+    }
 
     @Override
     public String toString() {
