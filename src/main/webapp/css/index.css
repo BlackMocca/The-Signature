@@ -88,6 +88,10 @@ a:hover {
 .homestay-detail .detail-value {
   justify-content: left;
 }
+.homestay-denied-border {
+  border: 5px solid red;
+  padding: 0 5px 5px 5px;
+}
 
 /* SIDEBAR ======= */
 
