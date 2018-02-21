@@ -32,7 +32,7 @@ public class HomestayTest extends ConnectDatabaseTest {
     @Test
     public void testCreateHomestay() {
         Map<String, Object> data = new HashMap<String, Object>();
-        
+
         data.put("User_id", 1);
         data.put("Homestay_name", "huaghome");
         data.put("Content_image", pathToImage + "test-image.jpg");
@@ -55,46 +55,52 @@ public class HomestayTest extends ConnectDatabaseTest {
 
         Assert.assertEquals(1, expect);
     }
-    
+
     @Test
-    public void testGetHomestayByUserId(){
+    public void testGetHomestayByUserId() {
         ArrayList<Homestay> homestayList = Homestay.getHomestayByUserId(1);
         System.out.println(homestayList);
         Assert.assertNotNull(homestayList);
     }
 
     @Test
+    public void testGetApprovedHomestayLists() {
+
+    }
+
+    @Test
     public void testCheckHomestayNameRepeat() {
         Map<String, Object> data = new HashMap<String, Object>();
         Homestay homestay = new Homestay();
-        
+
         data.put("Homestay_name", "huaghome");
         boolean expect = homestay.checkHomestayNameRepeat(data);
-        
+
         Assert.assertEquals(false, expect);
     }
 
     @Test
-    public void testIsPDFFile(){
+    public void testIsPDFFile() {
         String pdfFileTest = "test.pdf";
         boolean expect = Homestay.isPDFFile(pdfFileTest);
-        
+
         Assert.assertEquals(true, expect);
     }
-    
+
     @Test
-    public void testIsJPGFile(){
+    public void testIsJPGFile() {
         String jpgFileTest = "test.jpg";
         boolean expect = Homestay.isJPGFile(jpgFileTest);
-        
+
         Assert.assertEquals(true, expect);
     }
-    
+
     @Test
-    public void testIsPNGFile(){
+    public void testIsPNGFile() {
         String pngFileTest = "test.png";
         boolean expect = Homestay.isPNGFile(pngFileTest);
-        
+
         Assert.assertEquals(true, expect);
     }
+
 }
