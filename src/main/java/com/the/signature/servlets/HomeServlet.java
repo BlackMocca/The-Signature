@@ -32,8 +32,9 @@ public class HomeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Homestay> homestayList = Homestay.getHomestayByUserId(2);
+        ArrayList<Homestay> homestayList = Homestay.getApprovedHomestayLists(2);
         System.out.println(homestayList);
+        request.setAttribute("homestayList", homestayList);
         if (homestayList == null){
             getServletContext().getRequestDispatcher("/OwnerHomestayListNoHome.jsp").forward(request, response);
         }
