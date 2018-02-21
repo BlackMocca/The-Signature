@@ -269,7 +269,7 @@
                       <div class="col-12">
                         <div class="form-group">
                             <label>Room / Night*</label>
-                            <input class="form-control" type="Number" placeholder="" name="Price">
+                            <input class="form-control" type="Number" placeholder="" name="Price" required>
                         </div>
                       </div>
                     </div>
