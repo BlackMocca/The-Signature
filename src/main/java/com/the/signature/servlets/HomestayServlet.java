@@ -143,7 +143,8 @@ public class HomestayServlet extends HttpServlet {
             }
         }
         if (data.containsKey("Homestay_name")){
-            if(data.get("Homestay_name") == null || ((String)data.get("Homestay_name")).equalsIgnoreCase(""))
+            boolean repeatName = Homestay.checkHomestayNameRepeat(data);
+            if(!repeatName && data.get("Homestay_name") == null || ((String)data.get("Homestay_name")).equalsIgnoreCase(""))
                return false; 
         }
         if (data.containsKey("Telno")){
