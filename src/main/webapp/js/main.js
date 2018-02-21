@@ -52,23 +52,24 @@
     ignore: "",
     rules: {
       cover: 'required',
-      open_license: {
+      Homestay_License_document: {
         required: true,
         extension: "pdf,jpg,png"
       },
-      copy_idcard: {
+      Hourse_document: {
+        required: true,
         extension: "pdf,jpg,png"
       },
-      homestay_price: {
+      Price: {
         required: true,
         number: true,
         min: 0
       },
-      homestay_desc: {
+      Description: {
         required: true,
         minlength: 130
       },
-      homestay_telno: {
+      Telno: {
         number: true,
         minlength: 9,
         maxlength: 10
