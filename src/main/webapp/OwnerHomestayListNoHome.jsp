@@ -99,9 +99,11 @@
 
       <!-- CONTENT START -->
       <div class="col col-md-8 col-12 bd text-center">
-        <button class="btn btn-square add-homestay-btn">
-          ADD HOMESTAY
-        </button>
+          <a href="OwnerHomestayCreate.jsp">
+            <button class="btn btn-square add-homestay-btn">
+                ADD HOMESTAY
+            </button>
+        </a>
       </div>
       <!-- CONTENT END -->
 

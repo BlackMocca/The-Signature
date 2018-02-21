@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author huag1
  */
-public class IndexServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +33,8 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Homestay> homestayList = Homestay.getHomestayByUserId(2);
-        if (homestayList != null){
+        System.out.println(homestayList);
+        if (homestayList == null){
             getServletContext().getRequestDispatcher("/OwnerHomestayListNoHome.jsp").forward(request, response);
         }
         getServletContext().getRequestDispatcher("/OwnerHomestayList.jsp").forward(request, response);

@@ -116,7 +116,9 @@ public class HomestayServlet extends HttpServlet {
                 data.put("User_id",2);
                 data.put("Status", "Verifying");
                 int insert = Homestay.createHomestay(data);
-                System.out.println(insert);
+                response.sendRedirect("home");
+            }else{
+                getServletContext().getRequestDispatcher("OwnerHomestayCreate.jsp").forward(request, response);
             }
         } catch (Exception ex) {
             Logger.getLogger(HomestayServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -144,8 +146,10 @@ public class HomestayServlet extends HttpServlet {
         }
         if (data.containsKey("Homestay_name")){
             boolean repeatName = Homestay.checkHomestayNameRepeat(data);
-            if(!repeatName && data.get("Homestay_name") == null || ((String)data.get("Homestay_name")).equalsIgnoreCase(""))
-               return false; 
+            if(data.get("Homestay_name") == null || ((String)data.get("Homestay_name")).equalsIgnoreCase(""))
+               return false;
+            if(repeatName) 
+               return true;
         }
         if (data.containsKey("Telno")){
             if(data.get("Telno") == null || ((String)data.get("Telno")).equalsIgnoreCase(""))

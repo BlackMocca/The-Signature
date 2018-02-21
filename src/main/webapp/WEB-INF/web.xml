@@ -13,8 +13,8 @@
         <servlet-class>com.the.signature.servlets.HomestayServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>IndexServlet</servlet-name>
-        <servlet-class>com.the.signature.servlets.IndexServlet</servlet-class>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.the.signature.servlets.HomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloWorldServlet</servlet-name>
@@ -29,8 +29,8 @@
         <url-pattern>/homestays</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>IndexServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

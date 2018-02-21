@@ -258,7 +258,6 @@ public class Homestay {
                     checkNameRepeat = false;
                 }
             }
-            con.close();
         } catch (Exception ex) {
             System.out.println(ex);
         }

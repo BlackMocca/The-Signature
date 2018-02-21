@@ -145,7 +145,7 @@
           <div class="col add-home-wrapper">
             <div class="row justify-content-end">
               <div class="col col-md-4 col-12">
-                <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">ADD HOMESTAY</button>
+                  <a href="OwnerHomestayCreate.jsp"><button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">ADD HOMESTAY</button></a>
               </div>
             </div>
           </div>

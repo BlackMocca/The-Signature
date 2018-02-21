@@ -290,7 +290,7 @@
               <div class="col col-md-4 col-12">
                 <a href=""><button class="btn btn-light btn-cancel btn-square">CANCEL</button></a>
                 <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page" form="homestay-create-form" value="Submit">
-                    CREATE
+                    CREATE 
                 </button>
               </div>
             </div>
