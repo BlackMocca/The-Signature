@@ -58,7 +58,7 @@ public class HomestayTest extends ConnectDatabaseTest {
         data.put("Homestay_name", "huaghome");
         boolean expect = homestay.checkHomestayNameRepeat(data);
         
-        Assert.assertEquals(true, expect);
+        Assert.assertEquals(false, expect);
     }
 
     @Test

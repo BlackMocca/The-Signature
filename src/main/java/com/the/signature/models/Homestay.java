@@ -8,6 +8,7 @@ package com.the.signature.models;
 import com.the.signature.utils.ConnectionBuilder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -156,6 +157,60 @@ public class Homestay {
         this.rule = rule;
     }
 
+    public static boolean isPDFFile(String filetype) {
+        boolean isPDF = false;
+        if (filetype.endsWith(".pdf") || filetype.endsWith(".PDF")) {
+            isPDF = true;
+        } else {
+            isPDF = false;
+        }
+
+        return isPDF;
+    }
+    
+    public static boolean isJPGFile(String filetype){
+        boolean isJPG = false;
+        if (filetype.endsWith(".jpg") || filetype.endsWith(".JPG")) {
+            isJPG = true;
+        } else {
+            isJPG = false;
+        }
+
+        return isJPG;
+    }
+    
+    public static boolean isPNGFile(String filetype){
+        boolean isPNG = false;
+        if (filetype.endsWith(".png") || filetype.endsWith(".PNG")) {
+            isPNG = true;
+        } else {
+            isPNG = false;
+        }
+
+        return isPNG;
+    }
+
+    public static boolean checkHomestayNameRepeat(Map<String, Object> data) {
+        boolean checkNameRepeat = true;
+        try {
+            Connection con = ConnectionBuilder.getConnection();
+            String sql = "select Homestay_name from signature.Homestays where Homestay_name = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, (String) data.get("Homestay_name"));
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String homestayName = rs.getString("Homestay_name");
+                if (homestayName.equalsIgnoreCase((String) data.get("Homestay_name"))) {
+                    checkNameRepeat = false;
+                }
+            }
+            con.close();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        return checkNameRepeat;
+    }
+
     public static int createHomestay(Map<String, Object> data) {
         try {
             Connection con = ConnectionBuilder.getConnection();
@@ -178,29 +233,10 @@ public class Homestay {
             pstmt.setString(12, (String) data.get("Close_time"));
             pstmt.setString(13, (String) data.get("Status"));
             return pstmt.executeUpdate();
-
-            return pstmt.executeUpdate();
-
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-    }
-
-    public boolean checkHomestayNameRepeat(Map<String, Object> data) {
-        return true;
-    }
-    
-    public static boolean isPDFFile(String fileType){
-        return true;
-    }
-    
-    public static boolean isJPGFile(String fileType){
-        return true;
-    }
-    
-    public static boolean isPNGFile(String fileType){
-        return true;
     }
 
     @Override
