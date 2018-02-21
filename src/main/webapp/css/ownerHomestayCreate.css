@@ -1,0 +1,73 @@
+/* HOMESTAY CREATE FORM ====== */
+
+.homestay-create-form {
+  margin: 40px;
+}
+.homestay-create-image {
+  height: 150px;
+}
+.homestay-img-wrapper div:not(:first-child) {
+  border-top: none;
+}
+.homestay-img {
+  border: 5px solid #efefef;
+  border-left: none;
+  border-right: none;
+}
+.homestay-cover {
+  border: 5px solid #efefef;
+  border-left: none;
+}
+.dis-none {
+  display: none !important;
+}
+.form-wrapper {
+  margin-bottom: 5px;
+}
+.form-header {
+  background: #6abcaa;
+  color: #fff;
+  padding: 15px;
+}
+.form-content {
+  background: #fff;
+  padding-top: 15px;
+  min-height: 200px;
+  text-align: left;
+}
+.form-right {
+  border-left: 5px solid rgba(0,0,0,0);
+}
+.homestay-default-img {
+  background: url('https://image.flaticon.com/icons/svg/138/138570.svg');
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+}
+.homestay-create-btn-wrapper {
+  margin: 0 30px 30px 30px;
+}
+.btn-cancel {
+  background: #f8f9fa !important;
+  color: black !important;
+}
+.img-input-error {
+  -webkit-box-shadow:inset 0px 0px 0px 1px red;
+  -moz-box-shadow:inset 0px 0px 0px 1px red;
+  box-shadow:inset 0px 0px 0px 1px red;
+}
+@media screen and (max-width: 768px){
+  #cover-img-wrapper {
+    height: 200px;
+  }
+  .form-content {
+    min-height: unset;
+  }
+}
+@media screen and (max-width: 991px){
+  .btn-square {
+    display: block;
+    width: 100%;
+  }
+}
