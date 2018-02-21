@@ -65,7 +65,21 @@ public class HomestayTest extends ConnectDatabaseTest {
 
     @Test
     public void testGetApprovedHomestayLists() {
-
+        ArrayList<Homestay> homestayList = Homestay.getHomestayByUserId(2);
+        boolean expect = false;
+        boolean verified = false;
+        boolean denied = false;
+        
+        for (Homestay homestay : homestayList) {
+            verified = ((String)homestay.getStatus()).equalsIgnoreCase("verified");
+            denied = ((String)homestay.getStatus()).equalsIgnoreCase("denied");
+            expect = verified || denied;
+            if(!expect){
+                break;
+            }
+        }
+        
+        Assert.assertEquals(true, expect);
     }
 
     @Test
