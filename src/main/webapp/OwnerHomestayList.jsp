@@ -1,3 +1,11 @@
+<%-- 
+    Document   : OwnerHomestayList
+    Created on : Feb 21, 2018, 11:05:45 AM
+    Author     : huag1
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +16,8 @@
   <title>Owner Homestay List</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/navbar.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
@@ -137,7 +145,7 @@
           <div class="col add-home-wrapper">
             <div class="row justify-content-end">
               <div class="col col-md-4 col-12">
-                <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">ADD HOMESTAY</button>
+                  <a href="OwnerHomestayCreate.jsp"><button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">ADD HOMESTAY</button></a>
               </div>
             </div>
           </div>
