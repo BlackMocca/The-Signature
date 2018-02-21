@@ -142,6 +142,14 @@
                             <input class="form-control" type="text" placeholder="" name="Homestay_name" required>
                         </div>
                         <div class="form-group">
+                            <label>Category*</label>
+                            <select class="form-control" name="Category" id="" required>
+                              <option value="Mountain">Mountain</option>
+                              <option value="Sea">Sea</option>
+                              <option value="Riverside">Riverside</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>Province*</label>
                             <select class="form-control" name="Province" id="" required>
                               <option value="Bangkok">Bangkok</option>
