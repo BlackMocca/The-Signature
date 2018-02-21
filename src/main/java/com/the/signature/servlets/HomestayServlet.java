@@ -112,9 +112,12 @@ public class HomestayServlet extends HttpServlet {
                             contentImage += ",";
                         }
                     }
+                data.put("Cover_img",pathImage.get("Cover_img").get(0));
                 data.put("Content_image",contentImage);
+                data.put("Hourse_document",pathImage.get("Hourse_document").get(0));
+                data.put("Homestay_License_document",pathImage.get("Homestay_License_document").get(0));
                 data.put("User_id",2);
-                data.put("Status", "Verifying");
+                data.put("Status", "verified");
                 int insert = Homestay.createHomestay(data);
                 response.sendRedirect("home");
             }else{
