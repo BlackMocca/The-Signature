@@ -31,13 +31,17 @@ public class HomestayTest extends ConnectDatabaseTest {
     @Test
     public void testCreateHomestay() {
         Map<String, Object> data = new HashMap<String, Object>();
-
+        
         data.put("User_id", 1);
         data.put("Homestay_name", "huaghome");
         data.put("Content_image", pathToImage + "test-image.jpg");
         data.put("Cover_img", pathToImage + "test-cover-image.jpeg");
         data.put("Hourse_document", pathToImage + "test-house-document.jpg");
         data.put("Homestay_License_document", pathToImage + "test-house-document.jpg");
+        data.put("Province", "Bangkok");
+        data.put("District", "Bangkhunthien");
+        data.put("Sub_district", "Jomthong");
+        data.put("Address_detail", "622/208 Casacity village Bangkhunthien-chaitale rtd.");
         data.put("Description", "desc");
         data.put("Rule", "rule");
         data.put("Telno", "0123456789");
@@ -45,6 +49,7 @@ public class HomestayTest extends ConnectDatabaseTest {
         data.put("Open_time", "08.00");
         data.put("Close_time", "20.00");
         data.put("Status", "verifying");
+        data.put("Price", "500");
         int expect = Homestay.createHomestay(data);
 
         Assert.assertEquals(1, expect);

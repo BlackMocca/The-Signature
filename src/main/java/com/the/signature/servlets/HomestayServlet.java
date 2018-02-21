@@ -95,13 +95,13 @@ public class HomestayServlet extends HttpServlet {
                 Map<String,ArrayList<Object>> pathImage = (HashMap) request.getAttribute("pathImage");
                 Object[] additionContentImage = new Object[3];
                 if (data.get("Content_image1") != null && pathImage.get("Content_image1") != null){
-                    additionContentImage[0] = pathImage.get("Content_image1");
+                    additionContentImage[0] = pathImage.get("Content_image1").get(0);
                 }
                 if (data.get("Content_image2") != null && pathImage.get("Content_image2") != null){
-                    additionContentImage[1] = pathImage.get("Content_image2");
+                    additionContentImage[1] = pathImage.get("Content_image2").get(0);
                 }
                 if (data.get("Content_image3") != null && pathImage.get("Content_image3") != null){
-                    additionContentImage[2] = pathImage.get("Content_image3");
+                    additionContentImage[2] = pathImage.get("Content_image3").get(0);
                 }
                 int countContentImage = additionContentImage.length;
                 String contentImage = "";

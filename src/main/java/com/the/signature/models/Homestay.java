@@ -216,8 +216,9 @@ public class Homestay {
             Connection con = ConnectionBuilder.getConnection();
             String sql = "insert into signature.Homestays "
                     + "(User_id, Homestay_name, Content_image, Cover_img, Hourse_document"
-                    + ", Homestay_License_document, Description, Rule, Telno, Category, Open_time, Close_time, Status)"
-                    + "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + ", Homestay_License_document,Province, District, Sub_district,Address_detail "
+                    + ", Description, Rule, Telno, Category, Open_time, Close_time, Status, Price)"
+                    + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, (int) data.get("User_id"));
             pstmt.setString(2, (String) data.get("Homestay_name"));
@@ -225,13 +226,18 @@ public class Homestay {
             pstmt.setString(4, (String) data.get("Cover_img"));
             pstmt.setString(5, (String) data.get("Hourse_document"));
             pstmt.setString(6, (String) data.get("Homestay_License_document"));
-            pstmt.setString(7, (String) data.get("Description"));
-            pstmt.setString(8, (String) data.get("Rule"));
-            pstmt.setString(9, (String) data.get("Telno"));
-            pstmt.setString(10, (String) data.get("Category"));
-            pstmt.setString(11, (String) data.get("Open_time"));
-            pstmt.setString(12, (String) data.get("Close_time"));
-            pstmt.setString(13, (String) data.get("Status"));
+            pstmt.setString(7, (String) data.get("Province"));
+            pstmt.setString(8, (String) data.get("District"));
+            pstmt.setString(9, (String) data.get("Sub_district"));
+            pstmt.setString(10, (String) data.get("Address_detail"));
+            pstmt.setString(11, (String) data.get("Description"));
+            pstmt.setString(12, (String) data.get("Rule"));
+            pstmt.setString(13, (String) data.get("Telno"));
+            pstmt.setString(14, (String) data.get("Category"));
+            pstmt.setString(15, (String) data.get("Open_time"));
+            pstmt.setString(16, (String) data.get("Close_time"));
+            pstmt.setString(17, (String) data.get("Status"));
+            pstmt.setInt(18, Integer.valueOf((String) data.get("Price")));
             return pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
