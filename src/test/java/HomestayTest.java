@@ -59,7 +59,6 @@ public class HomestayTest extends ConnectDatabaseTest {
     @Test
     public void testGetHomestayByUserId() {
         ArrayList<Homestay> homestayList = Homestay.getHomestayByUserId(1);
-        System.out.println(homestayList);
         Assert.assertNotNull(homestayList);
     }
 

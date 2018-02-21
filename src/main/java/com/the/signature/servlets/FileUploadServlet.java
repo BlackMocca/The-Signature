@@ -35,7 +35,8 @@ public class FileUploadServlet extends HttpServlet {
     private boolean isMultipart;
     private String filePath;
     private String pathToImage;
-    
+    String pathWebApp = "images/";
+     
     public void init(){
         pathToImage = "/src/main/webapp/images/";
         filePath = ENV.getENV("PATH_PROJECT_SIGNATURE")+ pathToImage;
@@ -125,7 +126,7 @@ public class FileUploadServlet extends HttpServlet {
           file = new File( filePath + fileName.substring(fileName.lastIndexOf("\\")+1)) ;
         }
         fileItem.write(file);
-        return pathToImage + fileName.substring(fileName.lastIndexOf("\\")+1);
+        return pathWebApp + fileName.substring(fileName.lastIndexOf("\\")+1);
     }
 
     /**

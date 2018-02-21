@@ -4,7 +4,8 @@
     Author     : huag1
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.the.signature.models.ENV"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -112,7 +113,7 @@
                                             <div class="col col-md-6 col-12">
                                                 <a href="#">
                                                     <div class="row homestay-image-wrapper">
-                                                        <div class="col col-12 homestay-image" style="background-image: url('${h.img_cover}');"></div>
+                                                        <div class="col col-12 homestay-image" style="background-image: url('${h.img_cover}')"></div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -122,7 +123,7 @@
                                                     <div class="col-12 homestay-detail">
                                                         <div class="row">
                                                             <div class="col-4 detail-title">NAME</div>
-                                                            <div class="col-8 detail-value">${h.homestayName}</div>
+                                                            <div class="col-8 detail-value">${h.homestay_name}</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 homestay-detail">
@@ -145,10 +146,6 @@
 
                             </c:when>
 
-                            <!-- VERIFIED HOMESTAY ROW END -->
-
-
-                            <!-- DENIED HOMESTAY ROW START -->
                             <c:otherwise>
                                 <div class="row">
                                     <div class="col homestay-row">
@@ -157,7 +154,7 @@
                                             <div class="col col-md-6 col-12">
                                                 <a href="#">
                                                     <div class="row homestay-image-wrapper">
-                                                        <div class="col col-12 homestay-image" style="background-image: url('${h.img_cover}');"></div>
+                                                        <div class="col col-12 homestay-image" style="background-image: url('${h.img_cover}')"></div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -167,7 +164,7 @@
                                                     <div class="col-12 homestay-detail">
                                                         <div class="row">
                                                             <div class="col-4 detail-title">NAME</div>
-                                                            <div class="col-8 detail-value">${h.homestayName}</div>
+                                                            <div class="col-8 detail-value">${h.homestay_name}</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 homestay-detail">
