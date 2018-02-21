@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,10 @@ public class Homestay {
     String img_cover;
     String hourse_document;
     String house_license_document;
+    String province;
+    String district;
+    String sub_district;
+    String address_detail;
     String telno;
     String category;
     String open_time;
@@ -33,17 +38,22 @@ public class Homestay {
     String status;
     String description;
     String rule;
+    int price;
 
     public Homestay() {
     }
 
-    public Homestay(String homestay_name, int user_id, String image, String img_cover, String hourse_document, String house_license_document, String telno, String category, String open_time, String close_time, String status, String description, String rule) {
+    public Homestay(String homestay_name, int user_id, String image, String img_cover, String hourse_document, String house_license_document, String province, String district, String sub_district, String address_detail, String telno, String category, String open_time, String close_time, String status, String description, String rule, int price) {
         this.homestay_name = homestay_name;
         this.user_id = user_id;
         this.image = image;
         this.img_cover = img_cover;
         this.hourse_document = hourse_document;
         this.house_license_document = house_license_document;
+        this.province = province;
+        this.district = district;
+        this.sub_district = sub_district;
+        this.address_detail = address_detail;
         this.telno = telno;
         this.category = category;
         this.open_time = open_time;
@@ -51,7 +61,50 @@ public class Homestay {
         this.status = status;
         this.description = description;
         this.rule = rule;
+        this.price = price;
     }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getSub_district() {
+        return sub_district;
+    }
+
+    public void setSub_district(String sub_district) {
+        this.sub_district = sub_district;
+    }
+
+    public String getAddress_detail() {
+        return address_detail;
+    }
+
+    public void setAddress_detail(String address_detail) {
+        this.address_detail = address_detail;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    
 
     public String getHomestay_name() {
         return homestay_name;
@@ -244,7 +297,7 @@ public class Homestay {
         }
         return 0;
     }
-
+    
     @Override
     public String toString() {
         return "Homestay{" + "homestay_name=" + homestay_name + ", user_id=" + user_id + ", image=" + image + ", img_cover=" + img_cover + ", hourse_document=" + hourse_document + ", house_license_document=" + house_license_document + ", telno=" + telno + ", category=" + category + ", open_time=" + open_time + ", close_time=" + close_time + ", status=" + status + ", description=" + description + ", rule=" + rule + '}';
