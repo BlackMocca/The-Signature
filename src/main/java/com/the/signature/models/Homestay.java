@@ -179,10 +179,28 @@ public class Homestay {
             pstmt.setString(13, (String) data.get("Status"));
             return pstmt.executeUpdate();
 
+            return pstmt.executeUpdate();
+
         } catch (SQLException ex) {
             Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+
+    public boolean checkHomestayNameRepeat(Map<String, Object> data) {
+        return true;
+    }
+    
+    public static boolean isPDFFile(String fileType){
+        return true;
+    }
+    
+    public static boolean isJPGFile(String fileType){
+        return true;
+    }
+    
+    public static boolean isPNGFile(String fileType){
+        return true;
     }
 
     @Override
