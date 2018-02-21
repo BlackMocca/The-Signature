@@ -107,7 +107,7 @@
         <div class="row">
           <div class="col homestay-create-form">
 
-            <form action="" id="homestay-create-form">
+           <form action="homestays" method="post" enctype="multipart/form-data" id="homestay-create-form">
 
             <div class="row">
               <div class="col">
@@ -120,10 +120,10 @@
                       <div class="col-12 col-sm-4 col-md-12 homestay-img homestay-create-image homestay-default-img" id="img-3"></div>
                     </div>
                   </div>
-                  <input id="cover-input" class="dis-none" type="file" accept="image/*" name="cover" required/>
-                  <input id="image-input-1" class="dis-none" type="file" accept="image/*" name="img-1" required/>
-                  <input id="image-input-2" class="dis-none" type="file" accept="image/*" name="img-2" required/>
-                  <input id="image-input-3" class="dis-none" type="file" accept="image/*" name="img-3" required/>
+                  <input id="cover-input" class="dis-none" type="file" accept="image/*" name="Cover_img" required/>
+                  <input id="image-input-1" class="dis-none" type="file" accept="image/*" name="Content_image1" required/>
+                  <input id="image-input-2" class="dis-none" type="file" accept="image/*" name="Content_image2" required/>
+                  <input id="image-input-3" class="dis-none" type="file" accept="image/*" name="Content_image3" required/>
                 </div>
               </div>
             </div>
@@ -133,13 +133,17 @@
                 <div class="row">
                   <div class="col-md-6 col-12">
                     <div class="row">
-                      <div class="col-12 form-header">ADDRESS</div>
+                      <div class="col-12 form-header">HOMESTAY DETAIL</div>
                     </div>
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
+                            <label>Homestay Name*</label>
+                            <input class="form-control" type="text" placeholder="" name="Homestay_name" required>
+                        </div>
+                        <div class="form-group">
                             <label>Province*</label>
-                            <select class="form-control" name="homestay_prov" id="" required>
+                            <select class="form-control" name="Province" id="" required>
                               <option value="Bangkok">Bangkok</option>
                               <option value="Chiangmai">Chiangmai</option>
                               <option value="Nakornpathom">Nakornpathom</option>
@@ -147,15 +151,15 @@
                         </div>
                         <div class="form-group">
                             <label>Dicstrict*</label>
-                            <input class="form-control" type="text" placeholder="" name="homestay_disc" required>
+                            <input class="form-control" type="text" placeholder="" name="District" required>
                         </div>
                         <div class="form-group">
                             <label>Sub-Dicstrict*</label>
-                            <input class="form-control" type="text" placeholder="" name="homestay_sub_disc" required>
+                            <input class="form-control" type="text" placeholder="" name="Sub_district" required>
                         </div>
                         <div class="form-group">
-                            <label>Detail*</label>
-                            <textarea class="form-control" type="text" placeholder="" rows="5" name="homestay_addr_detail" required></textarea>
+                            <label>Address Detail*</label>
+                            <textarea class="form-control" type="text" placeholder="" rows="5" name="Address_detail" required></textarea>
                         </div>
                       </div>
                     </div>
@@ -168,13 +172,13 @@
                       <div class="col-12">
                         <div class="form-group">
                             <label>Tel No.*</label>
-                            <input class="form-control" type="text" placeholder="" name="homestay_telno" required>
+                            <input class="form-control" type="text" placeholder="" name="Telno" required>
                         </div>
                         <div class="form-group">
                             <label>Operation Time*</label><br />
                             <label>Open-Time</label>
                             <div class="input-group date" id="homestay-open-time" data-target-input="nearest">
-                              <input type="text" id="open-time-input" class="form-control datetimepicker-input" data-target="#homestay-open-time" name="homestay_open_time" required/>
+                              <input type="text" id="open-time-input" class="form-control datetimepicker-input" data-target="#homestay-open-time" name="Open_time" required/>
                               <div class="input-group-append homestay-open-icon" data-target="#homestay-open-time" data-toggle="datetimepicker">
                                   <div class="input-group-text icon-block"><i class="far fa-clock"></i></div>
                               </div>
@@ -183,7 +187,7 @@
                         <div class="form-group">
                             <label>Close-Time</label>
                             <div class="input-group date" id="homestay-close-time" data-target-input="nearest">
-                              <input type="text" id="close-time-input" class="form-control datetimepicker-input" data-target="#homestay-close-time" name="homestay_close_time" required/>
+                              <input type="text" id="close-time-input" class="form-control datetimepicker-input" data-target="#homestay-close-time" name="Close_time" required/>
                               <div class="input-group-append" data-target="#homestay-close-time" data-toggle="datetimepicker">
                                   <div class="input-group-text icon-block"><i class="far fa-clock"></i></div>
                               </div>
@@ -207,7 +211,7 @@
                       <div class="col-12">
                         <div class="form-group">
                             <label>Homestay Description*</label>
-                            <textarea class="form-control" type="text" placeholder="" rows="5" name="homestay_desc" required></textarea>
+                            <textarea class="form-control" type="text" placeholder="" rows="5" name="Description" required></textarea>
                         </div>
                       </div>
                     </div>
@@ -220,7 +224,7 @@
                       <div class="col-12">
                         <div class="form-group">
                             <label>Homestay Rules and Condition*</label>
-                            <textarea class="form-control" type="text" placeholder="" rows="5" name="homestay_rules_cond" required></textarea>
+                            <textarea class="form-control" type="text" placeholder="" rows="5" name="Rule" required></textarea>
                         </div>
                       </div>
                     </div>
@@ -239,12 +243,12 @@
                     <div class="row form-content">
                       <div class="col-12">
                         <div class="form-group">
-                            <label>Open License* (.pdf, .jpg, .png only)</label>
-                            <input class="form-control" type="file" placeholder="" name="open_license" required>
+                            <label>Homestay License* (.pdf, .jpg, .png only)</label>
+                            <input class="form-control" type="file" placeholder="" name="Homestay_License_document" required>
                         </div>
                         <div class="form-group">
-                            <label>Copy of ID Card* (.pdf, .jpg, .png only)</label>
-                            <input class="form-control" type="file" placeholder="" name="copy_idcard" required>
+                            <label>House Registeration* (.pdf, .jpg, .png only)</label>
+                            <input class="form-control" type="file" placeholder="" name="Hourse_document" required>
                         </div>
                       </div>
                     </div>
@@ -257,7 +261,7 @@
                       <div class="col-12">
                         <div class="form-group">
                             <label>Room / Night*</label>
-                            <input class="form-control" type="Number" placeholder="" name="homestay_price">
+                            <input class="form-control" type="Number" placeholder="" name="Price">
                         </div>
                       </div>
                     </div>
@@ -269,21 +273,24 @@
           </div>
         </div>
         <!-- HOMESTAY CREATE FORM END -->
-
+        </form>
+              
         <!-- HOMESTAY CREATE BUTTON START -->
         <div class="row homestay-create-btn-wrapper">
           <div class="col">
             <div class="row justify-content-end">
               <div class="col col-md-4 col-12">
-                <a href="#"><button class="btn btn-light btn-cancel btn-square">CANCEL</button></a>
-                <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page">CREATE</button>
+                <a href=""><button class="btn btn-light btn-cancel btn-square">CANCEL</button></a>
+                <button class="btn btn-square add-homestay-btn add-homestay-btn-list-page" form="homestay-create-form" value="Submit">
+                    CREATE
+                </button>
               </div>
             </div>
           </div>
         </div>
         <!-- HOMESTAY CREATE BUTTON END -->
 
-        </form>
+        
 
       </div>
       <!-- CONTENT END -->
