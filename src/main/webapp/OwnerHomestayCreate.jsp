@@ -1,19 +1,28 @@
+<%-- 
+    Document   : OwnerHomestayCreate
+    Created on : Feb 21, 2018, 11:03:58 AM
+    Author     : ChanonPingpong
+--%>
+
+<%@page import="com.the.signature.models.ENV"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Owner Homestay Create</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="tempusdominus-bootstrap-4.min.css" />
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/navbar.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:300" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="ownerHomestayCreate.css">
+  <link rel="stylesheet" href="/The-Signature/css/ownerHomestayCreate.css">
 </head>
 
 <body>
@@ -291,9 +300,9 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-  <script src="moment.js"></script>
-  <script src="tempusdominus-bootstrap-4.min.js"></script>
-  <script src="main.js"></script>
+  <script src="js/moment.js"></script>
+  <script src="js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
