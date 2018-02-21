@@ -7,6 +7,7 @@
 import com.the.signature.models.ENV;
 import com.the.signature.models.Homestay;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,6 +54,13 @@ public class HomestayTest extends ConnectDatabaseTest {
         int expect = Homestay.createHomestay(data);
 
         Assert.assertEquals(1, expect);
+    }
+    
+    @Test
+    public void testGetHomestayByUserId(){
+        ArrayList<Homestay> homestayList = Homestay.getHomestayByUserId(1);
+        System.out.println(homestayList);
+        Assert.assertNotNull(homestayList);
     }
 
     @Test

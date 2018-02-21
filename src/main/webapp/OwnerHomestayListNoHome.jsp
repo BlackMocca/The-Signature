@@ -114,9 +114,9 @@
   <!-- SWEET ALERT START -->
   <script>
     // IF CREATE COMPLETE
-    if (true) {
-      swal("Completed!", "Please wait for contact.", "success");
-    }
+//    if (true) {
+//      swal("Completed!", "Please wait for contact.", "success");
+//    }
   </script>
   <!-- SWEET ALERT END -->
 

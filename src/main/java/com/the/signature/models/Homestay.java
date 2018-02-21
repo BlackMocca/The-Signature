@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sun.security.rsa.RSACore;
 
 /**
  *
@@ -298,6 +299,49 @@ public class Homestay {
         return 0;
     }
     
+    public static ArrayList<Homestay> getHomestayByUserId(int userId){
+        ArrayList<Homestay> homestayList = null;
+        try{
+            Connection con = ConnectionBuilder.getConnection();
+            String sql = "select * from signature.Homestays where User_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                if (homestayList == null){
+                    homestayList = new ArrayList<>();
+                }
+                String homestayName = rs.getString("Homestay_name");
+                int user_id = rs.getInt("User_id");
+                String image = rs.getString("Content_image");
+                String img_cover = rs.getString("Cover_img");
+                String hourse_document = rs.getString("Hourse_document");
+                String house_license_document = rs.getString("Homestay_License_document");
+                String province = rs.getString("Province");
+                String district = rs.getString("District");
+                String sub_district = rs.getString("Sub_district");
+                String address_detail = rs.getString("Address_detail");
+                String telno = rs.getString("Telno");
+                String category = rs.getString("Category");
+                String open_time = rs.getString("Open_time");
+                String close_time = rs.getString("Close_time");
+                String status = rs.getString("Status");
+                String description = rs.getString("Description");
+                String rule = rs.getString("Rule");
+                int price = rs.getInt("Price");
+                Homestay homestay = new Homestay(homestayName, user_id, image, img_cover,hourse_document,house_license_document,
+                                                 province,district,sub_district,address_detail,telno,category,open_time,close_time,
+                                                 status,description,rule,price
+                                                );
+                homestayList.add(homestay);
+            }
+            return homestayList;
+        }catch(SQLException ex){
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return homestayList;
+    }
+
     @Override
     public String toString() {
         return "Homestay{" + "homestay_name=" + homestay_name + ", user_id=" + user_id + ", image=" + image + ", img_cover=" + img_cover + ", hourse_document=" + hourse_document + ", house_license_document=" + house_license_document + ", telno=" + telno + ", category=" + category + ", open_time=" + open_time + ", close_time=" + close_time + ", status=" + status + ", description=" + description + ", rule=" + rule + '}';

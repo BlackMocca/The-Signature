@@ -113,7 +113,7 @@ public class HomestayServlet extends HttpServlet {
                         }
                     }
                 data.put("Content_image",contentImage);
-                data.put("User_id",1);
+                data.put("User_id",2);
                 data.put("Status", "Verifying");
                 int insert = Homestay.createHomestay(data);
                 System.out.println(insert);
