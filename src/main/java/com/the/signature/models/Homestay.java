@@ -340,7 +340,12 @@ public class Homestay {
         }
         return homestayList;
     }
-
+    
+    
+    public static ArrayList<Homestay> getApprovedHomestayLists(){
+        ArrayList<Homestay> homestayList = null;
+        return homestayList;
+    }
     @Override
     public String toString() {
         return "Homestay{" + "homestay_name=" + homestay_name + ", user_id=" + user_id + ", image=" + image + ", img_cover=" + img_cover + ", hourse_document=" + hourse_document + ", house_license_document=" + house_license_document + ", telno=" + telno + ", category=" + category + ", open_time=" + open_time + ", close_time=" + close_time + ", status=" + status + ", description=" + description + ", rule=" + rule + '}';
