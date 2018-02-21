@@ -127,23 +127,19 @@ public class HomestayServlet extends HttpServlet {
     protected boolean validateHomestay(Map<String,Object> data) {
         String[] documentTypeCheck = { ".png", ".jpg", ".jpeg", ".pdf" };
         if (data.containsKey("Hourse_document")){
-            boolean check = false;
-            String fileName = (String)data.get("Hourse_document");
-            for (String type : documentTypeCheck) {
-               if(fileName.contains(type)){ 
-                   check = true;
-                   break;
-               }
+            boolean JPGFile = Homestay.isJPGFile((String)data.get("Hourse_document"));
+            boolean PNGFile = Homestay.isPNGFile((String)data.get("Hourse_document"));
+            boolean PDFFile = Homestay.isPDFFile((String)data.get("Hourse_document"));
+            if (JPGFile == false && PNGFile == false && PDFFile == false){
+                return false;
             }
         }
         if (data.containsKey("Homestay_License_document")){
-            boolean check = false;
-            String fileName = (String)data.get("Hourse_document");
-            for (String type : documentTypeCheck) {
-               if(fileName.contains(type)){ 
-                   check = true;
-                   break;
-               }
+            boolean JPGFile = Homestay.isJPGFile((String)data.get("Homestay_License_document"));
+            boolean PNGFile = Homestay.isPNGFile((String)data.get("Homestay_License_document"));
+            boolean PDFFile = Homestay.isPDFFile((String)data.get("Homestay_License_document"));
+            if (JPGFile == false && PNGFile == false && PDFFile == false){
+                return false;
             }
         }
         if (data.containsKey("Homestay_name")){

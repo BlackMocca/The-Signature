@@ -170,7 +170,7 @@ public class Homestay {
     
     public static boolean isJPGFile(String filetype){
         boolean isJPG = false;
-        if (filetype.endsWith(".jpg") || filetype.endsWith(".JPG")) {
+        if (filetype.endsWith(".jpg") || filetype.endsWith(".JPG") || filetype.endsWith(".jpeg") || filetype.endsWith(".JPEG")) {
             isJPG = true;
         } else {
             isJPG = false;
