@@ -57,6 +57,7 @@ public class HomestayServlet extends HttpServlet {
         
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,6 +69,7 @@ public class HomestayServlet extends HttpServlet {
         File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
         factory.setRepository(repository);
         ServletFileUpload upload = new ServletFileUpload(factory);
+        
         try {
             List<FileItem> items = upload.parseRequest(request);
             Iterator files = items.iterator();
@@ -91,12 +93,26 @@ public class HomestayServlet extends HttpServlet {
                 rd.include(request, response);
                 
                 Map<String,ArrayList<Object>> pathImage = (HashMap) request.getAttribute("pathImage");
-                Object[] keys = pathImage.keySet().toArray();
-                for (int i = 0; i < keys.length; i++){
-                    String key = (String) keys[i];
-                    String formatedValue = TypeArrayListToString(pathImage.get(key));
-                    data.put(key, formatedValue);
+                Object[] additionContentImage = new Object[3];
+                if (data.get("Content_image1") != null && pathImage.get("Content_image1") != null){
+                    additionContentImage[0] = pathImage.get("Content_image1");
                 }
+                if (data.get("Content_image2") != null && pathImage.get("Content_image2") != null){
+                    additionContentImage[1] = pathImage.get("Content_image2");
+                }
+                if (data.get("Content_image3") != null && pathImage.get("Content_image3") != null){
+                    additionContentImage[2] = pathImage.get("Content_image3");
+                }
+                int countContentImage = additionContentImage.length;
+                String contentImage = "";
+                for (int i = 0; i < additionContentImage.length; i++){
+                        contentImage += (String) additionContentImage[i];
+                        if (countContentImage > 1){
+                            --countContentImage;
+                            contentImage += ",";
+                        }
+                    }
+                data.put("Content_image",contentImage);
                 data.put("User_id",1);
                 data.put("Status", "Verifying");
                 int insert = Homestay.createHomestay(data);
